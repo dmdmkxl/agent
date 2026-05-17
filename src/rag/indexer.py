@@ -1,0 +1,2 @@
+"""Vector index building utilities."""
+
