@@ -1,5 +1,7 @@
 """Day 3: tool calling examples."""
+
 from pathlib import Path
+
 
 def get_weather(city: str) -> str:
     weather_data = {
@@ -12,6 +14,7 @@ def get_weather(city: str) -> str:
         return f"{city}：{weather_data[city]}"
 
     return f"暂时没有 {city} 的天气数据"
+
 
 def is_weather_request(user_input: str) -> bool:
     weather_keywords = ["天气", "多少度", "气温", "冷不冷", "热不热"]
@@ -27,6 +30,7 @@ def extract_city(user_input: str) -> str | None:
 
     return None
 
+
 def handle_weather_question(user_input: str) -> str:
     if not is_weather_request(user_input):
         return "这不是天气查询，不调用天气工具。"
@@ -36,6 +40,7 @@ def handle_weather_question(user_input: str) -> str:
         return "你想查询哪个城市的天气？"
 
     return get_weather(city)
+
 
 def search_notes(keyword: str) -> list[str]:
     notes_dir = Path("notes")
@@ -47,6 +52,8 @@ def search_notes(keyword: str) -> list[str]:
             results.append(path.name)
 
     return results
+
+
 def is_notes_search_request(user_input: str) -> bool:
     scope_keywords = ["笔记", "notes"]
     action_keywords = ["查一下", "搜一下", "搜索", "有没有"]
@@ -66,10 +73,10 @@ def choose_tool(user_input: str) -> str | None:
 
     return None
 
+
 def main() -> None:
     print("Day 3: tools")
 
 
 if __name__ == "__main__":
     main()
-
